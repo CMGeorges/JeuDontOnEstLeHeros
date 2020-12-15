@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<h1 class="text-center">@ViewBag.Montitre</h1>
+<div class="row-cols-1">
+    <a class="btn btn-primary" asp-action="Create">
+        Créer
+    </a>
+</div>
+
+<h2 class="text-center small">Vos dernières aventures </h2>
+<div class="row">
+    @foreach (var item in @ViewBag.monTableau)
+    {
+    <a class=" card  border m-2 text-center" style="width:7rem;">
+        
+        <div class="card-body">
+            mon contue
+        </div>
+        
+    </a>
+        
+
+    }
+</div>

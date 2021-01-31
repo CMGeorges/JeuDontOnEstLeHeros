@@ -26,5 +26,14 @@ namespace PratiqueUdemy.Controllers
 
             return View(query.ToList());
         }
+        public ActionResult Create()
+        {
+            return this.View();
+        }   
+        
+        public ActionResult Edit(int id)
+        {
+            return this.View(id);
+        }
     }
 }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using JeuDontOnEstLeHeros.Core.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
+using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostEnvironment;
 
 namespace JeuDontOnEstLeHeros.backOffice.Web.UI
 {
@@ -82,6 +78,12 @@ namespace JeuDontOnEstLeHeros.backOffice.Web.UI
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
 
+                endpoints.MapControllerRoute(
+                    name: "edition-paragraphe",
+                    pattern: "{controller=Paragraphe}/{action=Edit}/{id?}",
+                constraints:new { id= new Contraints.LogConstraint()}
+                ); 
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

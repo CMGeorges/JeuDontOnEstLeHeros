@@ -62,6 +62,23 @@ namespace PratiqueUdemy
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "aventures",
+                    pattern: "demarrer-une-nouvelle-aventure",
+                    defaults:new { 
+                        controller= "Aventure",
+                        action= "Create"
+                    }); 
+                
+                endpoints.MapControllerRoute(
+                    name: "aventures-edition",
+                    pattern: "editer-une-aventure/{id}",
+                    defaults:new { 
+                        controller= "Aventure",
+                        action= "Edit"},
+                    constraints:new { id = @"\d+"}
+                    ); 
+                
+                endpoints.MapControllerRoute(
                     name: "mesaventures",
                     pattern: "mes-aventures",
                     defaults:new { 

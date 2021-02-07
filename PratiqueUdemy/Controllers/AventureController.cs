@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JeuDontOnEstLeHeros.Core.Data;
+using JeuDontOnEstLeHeros.Core.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using PratiqueUdemy.Models;
 
@@ -30,6 +31,28 @@ namespace PratiqueUdemy.Controllers
         {
             return this.View();
         }   
+        
+        [HttpPost]
+        public ActionResult Create(Aventure aventure)
+        {
+
+            if (this.ModelState.IsValid)//validation du model : Aventure
+            {
+                this._context.Aventures.Add(aventure);//on rajoute la nouvelle aventure 
+                this._context.SaveChanges();
+
+
+                return this.RedirectToAction("BeginNewOne");
+
+            }
+            return this.View();
+        }
+        
+        public ActionResult BeginNewOne()
+        {
+
+            return View();
+        }
         
         public ActionResult Edit(int id)
         {

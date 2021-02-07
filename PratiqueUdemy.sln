@@ -15,15 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exemple", "exemple", "{9A2B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsAvecEntitiesCodeFirst", "TestsAvecEntitiesCodeFirst\TestsAvecEntitiesCodeFirst.csproj", "{FDC69722-12FB-400E-943F-24992EE1056F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAuthentificationFacebook", "TestAuthentificationFacebook\TestAuthentificationFacebook.csproj", "{51F22442-3A77-47C4-AC8E-A34E495892F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAuthentificationFacebook", "TestAuthentificationFacebook\TestAuthentificationFacebook.csproj", "{51F22442-3A77-47C4-AC8E-A34E495892F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExempleJedi", "ExempleJedi\ExempleJedi.csproj", "{21ADC822-EEF7-4469-8744-12BCA65F4910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExempleJedi", "ExempleJedi\ExempleJedi.csproj", "{21ADC822-EEF7-4469-8744-12BCA65F4910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestJeuDroide", "UnitTestJeuDroide\UnitTestJeuDroide.csproj", "{087C2BD1-54BE-415D-8E6B-132E16977338}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestJeuDroide", "UnitTestJeuDroide\UnitTestJeuDroide.csproj", "{087C2BD1-54BE-415D-8E6B-132E16977338}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests unitaires", "Tests unitaires", "{751B39A2-A80C-4257-A8BE-C5B56CA3AEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebUI", "TestWebUI\TestWebUI.csproj", "{6159554F-D5E3-4B9F-96FC-F628083DC57F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWebUI", "TestWebUI\TestWebUI.csproj", "{6159554F-D5E3-4B9F-96FC-F628083DC57F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Session", "Test Session\Test Session.csproj", "{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6159554F-D5E3-4B9F-96FC-F628083DC57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6159554F-D5E3-4B9F-96FC-F628083DC57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6159554F-D5E3-4B9F-96FC-F628083DC57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{21ADC822-EEF7-4469-8744-12BCA65F4910} = {9A2B58D5-D9E4-4951-87E7-4545CBE9FBCE}
 		{087C2BD1-54BE-415D-8E6B-132E16977338} = {9A2B58D5-D9E4-4951-87E7-4545CBE9FBCE}
 		{6159554F-D5E3-4B9F-96FC-F628083DC57F} = {751B39A2-A80C-4257-A8BE-C5B56CA3AEC8}
+		{C5EE62EE-5CF3-443D-A0DC-D3B69A4E71D2} = {9A2B58D5-D9E4-4951-87E7-4545CBE9FBCE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A310603D-9E2A-4E49-B134-8A2CB4B5ECC3}

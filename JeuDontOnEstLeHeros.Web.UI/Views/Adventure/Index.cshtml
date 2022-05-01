@@ -1,0 +1,31 @@
+﻿@using JeuDontEstLeHeros.Core.Data.Models
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Adventure>
+@{
+    ViewData["Title"] = "Adventure Page";
+
+    var myTitle = ViewBag.myTitle;
+}
+
+<h1 class="text-center">@myTitle</h1>
+<div class="row justify-content-center">
+<a class="btn btn-primary m-2" asp-controller="Adventure" asp-action="Create">New adventure</a>
+
+</div>
+
+<h3 class="text-center ">Your last adventures</h3>
+<div class="row">
+    @foreach(var item in Model)
+    {
+        <a href="#" class="card border m-2 text-center" style="width: 7rem;">
+            <div class="card-body">
+                @item.Title
+            </div>
+
+        </a>
+    }    
+</div>
+
+

@@ -8,13 +8,17 @@ using Microsoft.Extensions.Configuration;
 
 ConfigurationBuilder builder = new ConfigurationBuilder();
 
-
+builder.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json");
+   
 var config = builder.Build();
 
-config.GetConnectionString("BackOfficeDb");
+var connectionString = config.GetConnectionString("BackOfficeDb");
 
 
 DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
+
+optionsBuilder.UseMySQL(connectionString);
 
 using (DBContext dbContext = new DBContext(optionsBuilder.Options))
 {

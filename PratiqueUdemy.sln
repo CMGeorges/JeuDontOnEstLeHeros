@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PratiqueUdemy", "PratiqueUdemy\PratiqueUdemy.csproj", "{85D92C91-8220-42B4-BDF1-DB5BAAF17D3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PratiqueUdemy", "src\PratiqueUdemy\PratiqueUdemy.csproj", "{85D92C91-8220-42B4-BDF1-DB5BAAF17D3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeuDontOnEstLeHeros.Core.Data", "JeuDontOnEstLeHeros.Core.Data\JeuDontOnEstLeHeros.Core.Data.csproj", "{795F03EF-1BF0-4283-8E56-E0697429FBBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeuDontOnEstLeHeros.Core.Data", "src\JeuDontOnEstLeHeros.Core.Data\JeuDontOnEstLeHeros.Core.Data.csproj", "{795F03EF-1BF0-4283-8E56-E0697429FBBB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{D1F71A98-00E7-4E15-BB6F-15074F8D1828}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeuDontOnEstLeHeros.backOffice.Web.UI", "JeuDontOnEstLeHeros.backOffice.Web.UI\JeuDontOnEstLeHeros.backOffice.Web.UI.csproj", "{C0AF4C9C-E249-467D-B2D3-61567AF7BA1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeuDontOnEstLeHeros.backOffice.Web.UI", "src\JeuDontOnEstLeHeros.backOffice.Web.UI\JeuDontOnEstLeHeros.backOffice.Web.UI.csproj", "{C0AF4C9C-E249-467D-B2D3-61567AF7BA1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exemple", "exemple", "{9A2B58D5-D9E4-4951-87E7-4545CBE9FBCE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsAvecEntitiesCodeFirst", "TestsAvecEntitiesCodeFirst\TestsAvecEntitiesCodeFirst.csproj", "{FDC69722-12FB-400E-943F-24992EE1056F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsAvecEntitiesCodeFirst", "src\TestsAvecEntitiesCodeFirst\TestsAvecEntitiesCodeFirst.csproj", "{FDC69722-12FB-400E-943F-24992EE1056F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAuthentificationFacebook", "TestAuthentificationFacebook\TestAuthentificationFacebook.csproj", "{51F22442-3A77-47C4-AC8E-A34E495892F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAuthentificationFacebook", "src\TestAuthentificationFacebook\TestAuthentificationFacebook.csproj", "{51F22442-3A77-47C4-AC8E-A34E495892F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExempleJedi", "ExempleJedi\ExempleJedi.csproj", "{21ADC822-EEF7-4469-8744-12BCA65F4910}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExempleJedi", "src\ExempleJedi\ExempleJedi.csproj", "{21ADC822-EEF7-4469-8744-12BCA65F4910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestJeuDroide", "UnitTestJeuDroide\UnitTestJeuDroide.csproj", "{087C2BD1-54BE-415D-8E6B-132E16977338}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestJeuDroide", "tests\UnitTestJeuDroide\UnitTestJeuDroide.csproj", "{087C2BD1-54BE-415D-8E6B-132E16977338}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests unitaires", "Tests unitaires", "{751B39A2-A80C-4257-A8BE-C5B56CA3AEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebUI", "TestWebUI\TestWebUI.csproj", "{6159554F-D5E3-4B9F-96FC-F628083DC57F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebUI", "tests\TestWebUI\TestWebUI.csproj", "{6159554F-D5E3-4B9F-96FC-F628083DC57F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

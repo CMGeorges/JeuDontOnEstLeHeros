@@ -10,7 +10,7 @@ namespace ExempleJedi
         {
             if (droide !=null)
             {
-                droide.PointDeVie -= 30;
+                droide.PointDeVie -= 50;
             }
            
         }

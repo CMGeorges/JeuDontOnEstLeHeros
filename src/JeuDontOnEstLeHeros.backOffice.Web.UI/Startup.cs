@@ -12,6 +12,8 @@ namespace JeuDontOnEstLeHeros.backOffice.Web.UI
 {
     public class Startup
     {
+        private const string DefaultContextConnectionName = "DefaultContext";
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -46,7 +48,7 @@ namespace JeuDontOnEstLeHeros.backOffice.Web.UI
                     options.AppSecret = this.Configuration["Api:Facebook:AppSecret"];
                 });
 
-            string connectionString = this.Configuration.GetConnectionString("DefaultContext");
+            string connectionString = GetRequiredConnectionString();
 
             services.AddDbContext<DefaultContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
 
@@ -88,6 +90,13 @@ namespace JeuDontOnEstLeHeros.backOffice.Web.UI
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private string GetRequiredConnectionString()
+        {
+            return this.Configuration.GetConnectionString(DefaultContextConnectionName)
+                ?? throw new InvalidOperationException(
+                    $"Connection string '{DefaultContextConnectionName}' is missing.");
         }
     }
 }

@@ -16,6 +16,8 @@ namespace PratiqueUdemy
 {
     public class Startup
     {
+        private const string DefaultContextConnectionName = "DefaultContext";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +34,7 @@ namespace PratiqueUdemy
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            string connectionString = this.Configuration.GetConnectionString("DefaultContext");
+            string connectionString = GetRequiredConnectionString();
 
             services.AddDbContext<DefaultContext>(options => options.UseSqlServer(connectionString),ServiceLifetime.Scoped);
 
@@ -90,6 +92,13 @@ namespace PratiqueUdemy
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private string GetRequiredConnectionString()
+        {
+            return this.Configuration.GetConnectionString(DefaultContextConnectionName)
+                ?? throw new InvalidOperationException(
+                    $"Connection string '{DefaultContextConnectionName}' is missing.");
         }
     }
 }

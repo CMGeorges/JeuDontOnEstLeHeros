@@ -8,6 +8,8 @@ namespace TestsAvecEntitiesCodeFirst
 {
     class Program
     {
+        private const string DefaultContextConnectionName = "DefaultContext";
+
         static void Main(string[] args)
         {
             ConfigurationBuilder builder = new ConfigurationBuilder();
@@ -18,7 +20,9 @@ namespace TestsAvecEntitiesCodeFirst
             var config =builder.Build();
 
 
-            string connectionString = config.GetConnectionString("DefaultContext");
+            string connectionString = config.GetConnectionString(DefaultContextConnectionName)
+                ?? throw new InvalidOperationException(
+                    $"Connection string '{DefaultContextConnectionName}' is missing.");
 
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
 

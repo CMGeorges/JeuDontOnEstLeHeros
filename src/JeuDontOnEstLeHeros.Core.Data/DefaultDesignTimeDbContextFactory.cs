@@ -11,6 +11,8 @@ namespace jeudontonestleheros.Core.Data
 {
     public class DefaultDesignTimeDbContextFactory : IDesignTimeDbContextFactory<DefaultContext>
     {
+        private const string DefaultContextConnectionName = "DefaultContext";
+
         public DefaultContext CreateDbContext(string[] args)
         {
             string path = Directory.GetCurrentDirectory();
@@ -22,7 +24,9 @@ namespace jeudontonestleheros.Core.Data
 
             var config = builder.Build();
 
-            var connectionString = config.GetConnectionString("DefaultContext");
+            var connectionString = config.GetConnectionString(DefaultContextConnectionName)
+                ?? throw new InvalidOperationException(
+                    $"Connection string '{DefaultContextConnectionName}' is missing.");
 
             DbContextOptionsBuilder<DefaultContext> optionBuilder = new DbContextOptionsBuilder<DefaultContext>();
             optionBuilder.UseSqlServer(connectionString); 

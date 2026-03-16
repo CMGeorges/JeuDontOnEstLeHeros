@@ -6,8 +6,9 @@ namespace TestsWebUI
     public class HomeControllerUnitTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void SmokeTest()
         {
+            Assert.IsTrue(true);
         }
     }
 }

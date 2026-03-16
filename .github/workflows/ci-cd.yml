@@ -1,0 +1,83 @@
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+env:
+  SOLUTION_FILE: PratiqueUdemy.sln
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  ci:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.1.x
+            8.0.x
+
+      - name: Restore
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
+
+      - name: Build
+        run: dotnet build ${{ env.SOLUTION_FILE }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+
+      - name: Test UnitTestJeuDroide
+        run: dotnet test tests/UnitTestJeuDroide/UnitTestJeuDroide.csproj --configuration ${{ env.BUILD_CONFIGURATION }} --no-build --logger "trx;LogFileName=UnitTestJeuDroide.trx"
+
+      - name: Test TestWebUI
+        run: dotnet test tests/TestWebUI/TestWebUI.csproj --configuration ${{ env.BUILD_CONFIGURATION }} --no-build --logger "trx;LogFileName=TestWebUI.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            tests/**/TestResults/*.trx
+          if-no-files-found: warn
+
+  cd:
+    name: Publish Web Artifacts
+    needs: ci
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            3.1.x
+            8.0.x
+
+      - name: Restore
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
+
+      - name: Publish PratiqueUdemy
+        run: dotnet publish src/PratiqueUdemy/PratiqueUdemy.csproj --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore --output ./artifacts/PratiqueUdemy
+
+      - name: Publish BackOffice
+        run: dotnet publish src/JeuDontOnEstLeHeros.backOffice.Web.UI/JeuDontOnEstLeHeros.backOffice.Web.UI.csproj --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore --output ./artifacts/BackOffice
+
+      - name: Upload published artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-apps-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error

@@ -90,7 +90,7 @@ namespace TestWebUI
         public void DefaultDesignTimeDbContextFactory_CreeUnContexteSqlServer()
         {
             string originalDirectory = Directory.GetCurrentDirectory();
-            string repositoryRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+            string repositoryRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
             string dataProjectDirectory = Path.Combine(repositoryRoot, "src", "JeuDontOnEstLeHeros.Core.Data");
 
             try

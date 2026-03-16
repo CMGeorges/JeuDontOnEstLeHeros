@@ -2,12 +2,14 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using JeuDontOnEstLeHeros.Core.Data;
-using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -39,7 +41,7 @@ namespace TestWebUI
         public async Task Configure_ConstruitLePipelineEnDeveloppement()
         {
             using IHost host = await BuildHostAsync(Environments.Development);
-            HttpStatusCode statusCode = (await host.GetTestClient().GetAsync("/")).StatusCode;
+            HttpStatusCode statusCode = (await host.GetTestClient().GetAsync("/mes-aventures")).StatusCode;
 
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
         }
@@ -48,7 +50,7 @@ namespace TestWebUI
         public async Task Configure_ConstruitLePipelineEnProduction()
         {
             using IHost host = await BuildHostAsync(Environments.Production);
-            HttpStatusCode statusCode = (await host.GetTestClient().GetAsync("/Home/Privacy")).StatusCode;
+            HttpStatusCode statusCode = (await host.GetTestClient().GetAsync("/mes-aventures")).StatusCode;
 
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
         }
@@ -76,7 +78,7 @@ namespace TestWebUI
         private static async Task<IHost> BuildHostAsync(string environment)
         {
             string applicationRoot = System.IO.Path.GetFullPath(
-                System.IO.Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "src", "PratiqueUdemy"));
+                System.IO.Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "src", "PratiqueUdemy"));
 
             IHost host = await Program.CreateHostBuilder(Array.Empty<string>())
                 .UseEnvironment(environment)
@@ -93,6 +95,13 @@ namespace TestWebUI
                 {
                     webBuilder.UseContentRoot(applicationRoot);
                     webBuilder.UseTestServer();
+                    webBuilder.ConfigureServices(services =>
+                    {
+                        services.RemoveAll(typeof(DbContextOptions<DefaultContext>));
+                        services.RemoveAll(typeof(DefaultContext));
+                        services.AddDbContext<DefaultContext>(options =>
+                            options.UseInMemoryDatabase($"startup-tests-{environment}"));
+                    });
                 })
                 .StartAsync();
 
